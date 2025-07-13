@@ -1,0 +1,10 @@
+let AnomalousUsers =
+CloudAppEvents
+| where Timestamp > ago(48h)
+| where UncommonForUser has "UserAgent"
+ and UncommonForUser has "ISP" 
+ and UncommonForUser has "CountryCode"
+| distinct AccountObjectId;
+GraphAPIAuditEvents
+| where Timestamp > ago(48h)
+| where AccountObjectId  has_any(AnomalousUsers)
