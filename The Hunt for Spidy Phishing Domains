@@ -1,3 +1,7 @@
+//Exposing Scattered Spider: New Indicators Highlight Growing Threat to Enterprises and Aviation
+//
+//https://blog.checkpoint.com/research/exposing-scattered-spider-new-indicators-highlight-growing-threat-to-enterprises-and-aviation/
+//
 let Whitelist = dynamic(["microsoftazuread-sso.com"]);
 let SpidyDomains = dynamic(["-sso.com","-servicedesk.com","-okta.com","-vpn.com","-help.com","-helpdesk.com","-corp.com","-internal.com","-servicenow.com"]);
 let EmailUrl = EmailUrlInfo | where UrlDomain has_any(SpidyDomains) and not (UrlDomain has_any(Whitelist));
